@@ -21,7 +21,9 @@ def main():
     file_name = os.path.splitext(os.path.basename(args.path))[0]
 
     frames: list[Image.Image] = extract_frames(args.path, args.frames, args.offset)
-    combined_image = combine_images(frames, mm_to_px(args.interval))
+    #Intervals different to 1mm present problems
+    #combined_image = combine_images(frames, mm_to_px(args.interval))
+    combined_image = combine_images(frames, mm_to_px(1))
     combined_image_path = os.path.join(args.output, f'{file_name}_combined.png')
     combined_image.save(combined_image_path)
     
